@@ -1,6 +1,5 @@
-package com.employee.crud.entity;
+package com.employee.crud.dao;
 
-import com.employee.crud.dao.EmployeeDAO;
 import com.employee.crud.model.Employee;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
