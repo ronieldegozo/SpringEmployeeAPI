@@ -1,5 +1,6 @@
 package com.employee.crud.rest;
 
+import com.employee.crud.exception.NotFoundException;
 import com.employee.crud.model.Employee;
 import com.employee.crud.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class EmployeeController {
         Employee getEmpId = employeesService.findById(employeeId);
 
         if(getEmpId == null){
-            throw new RuntimeException("Employee ID not found! " + employeeId);
+            throw new NotFoundException("Employee ID not found! " + employeeId);
         }
 
         return getEmpId;

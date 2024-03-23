@@ -3,6 +3,8 @@ package com.employee.crud.dao;
 import com.employee.crud.model.Employee;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -10,6 +12,7 @@ import java.util.List;
 
 @Repository
 public class EmployeeDAOJpaImp implements EmployeeDAO{
+    private static final Logger log = LoggerFactory.getLogger(EmployeeDAOJpaImp.class);
 
     //define field for entity manager
     private EntityManager entityManager;
@@ -26,6 +29,7 @@ public class EmployeeDAOJpaImp implements EmployeeDAO{
         //Create a custom query selected over the DB
         TypedQuery<Employee> getEmployees = entityManager.createQuery("from Employee", Employee.class);
 
+        log.info("Getting Employee by querys: {} "+ getEmployees.getResultList());
         //execute the query
         List<Employee> employees = getEmployees.getResultList();
 
