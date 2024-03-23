@@ -4,6 +4,7 @@ import com.employee.crud.model.Employee;
 import com.employee.crud.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
@@ -24,4 +25,15 @@ public class EmployeeController {
         return employeesService.findAll();
     }
 
+    @GetMapping("/employee/{employeeId}")
+    public Employee getEmployeeById(@PathVariable int employeeId){
+        Employee getEmpId = employeesService.findById(employeeId);
+
+        if(getEmpId == null){
+            throw new RuntimeException("Employee ID not found! " + employeeId);
+        }
+
+        return getEmpId;
+
+    }
 }
